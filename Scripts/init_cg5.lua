@@ -30,7 +30,22 @@ function mod.load(dir)
 	unloaders = {}
 
 	loadscript(dir .. "config")(mod)
-	loadscript(dir .. "replacements")(mod)
+	mod.onLoad(function (dir)
+		loadscript(dir .. "blocks")
+		loadscript(dir .. "conditions")
+		loadscript(dir .. "movement")
+		loadscript(dir .. "rules")
+		loadscript(dir .. "tools")
+
+	end)
+	mod.onUnload(function (dir)
+		loadscript("Data/blocks")
+		loadscript("Data/conditions")
+		loadscript("Data/movement")
+		loadscript("Data/rules")
+		loadscript("Data/tools")
+
+	end)
 	loadscript(dir .. "parser")(mod)
 	loadscript(dir .. "parser-effects")(mod)
 	loadscript(dir .. "if")(mod)
