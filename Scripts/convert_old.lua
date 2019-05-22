@@ -338,6 +338,8 @@ function doconvert(data,extrarule_)
 			newunit.flags[9] = true
 			newunit.flags[CONVERTED] = true
 			
+			addundo({"create",newunit.strings[UNITNAME],ingameid,baseingameid})
+			
 			if (mat2 ~= "cursor") then
 				addunit(newunitid)
 				addunitmap(newunitid,x,y,newunit.strings[UNITNAME])
@@ -347,8 +349,6 @@ function doconvert(data,extrarule_)
 				newunit.visible = true
 				newunit.layer = 2
 			end
-
-			addundo({"create",newunit.strings[UNITNAME],ingameid,baseingameid})
 
 			if (newunit.strings[UNITTYPE] == "text") then
 				updatecode = 1
@@ -415,11 +415,11 @@ function doconvert(data,extrarule_)
 		newunit.flags[9] = true
 		newunit.flags[CONVERTED] = true
 		
+		addundo({"create",newunit.strings[UNITNAME],id})
+		
 		addunit(newunitid)
 		addunitmap(newunitid,i,j,newunit.strings[UNITNAME])
 		dynamic(newunitid)
-		
-		addundo({"create",newunit.strings[UNITNAME],id})
 		
 		if (newunit.strings[UNITTYPE] == "text") then
 			updatecode = 1
