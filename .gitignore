@@ -1,0 +1,6 @@
+*.l
+*.ld
+!/Sprites/*.png
+*.png
+!/Sprites/*.png
+world_data.txt
